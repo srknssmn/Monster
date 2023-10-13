@@ -1,0 +1,26 @@
+{
+  "name": "monster",
+  "version": "1.0.0",
+  "description": "Monster Dymension App (by Coinhunters)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srknssmn/Monster.git"
+  },
+  "author": "SSS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srknssmn/Monster/issues"
+  },
+  "homepage": "https://github.com/srknssmn/Monster#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
