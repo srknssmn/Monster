@@ -7,9 +7,6 @@ dotenv.config();
 // Template Engine
 app.set('view engine', 'ejs');
 
-//Global Variable
-global.walletIN = null
-
 // Middlewares
 app.use(express.static('public'))
 app.use(express.json());
