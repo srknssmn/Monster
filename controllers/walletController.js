@@ -1,21 +1,19 @@
 // import {recoverPersonalSignature} from '@metamask/eth-sig-util'
 // import {bufferToHex} from 'ethereumjs-util';
 
-// const walletNonce = async (req, res) => {
+const walletConnect = async (req, res) => {
     
-//     try {
-//         const {walletAddress} = req.query;
-//         const nonce = String(Math.floor(Math.random()*10000));
-//         // save the nonce on the server
-//         nonceList[walletAddress] = nonce;
-//         res.send({nonce})
-//     } catch (error) {
-//         res.status(400).json({
-//             status: 'fail',
-//             error
-//         })
-//     }
-// }
+    try {
+        const {walletAddress} = req.query;
+        req.session.walletID = await walletAddress
+        res.redirect('/')
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error
+        })
+    }
+}
 
 // const walletVerify = async (req, res) => {
     
@@ -36,7 +34,6 @@
 //     }
 // }
 
-// export {
-//     walletNonce,
-//     walletVerify
-// }
+export {
+    walletConnect
+}

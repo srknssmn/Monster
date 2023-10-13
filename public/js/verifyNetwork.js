@@ -8,9 +8,11 @@ export const verifyNetwork = async () => {
     
     if (chainId === dymensionRollupID){
         console.log("Bravo!, you are on the correct network")
+        
     } else {
   
         console.log("oulalal, switch to the correct network");
+        
         try {
         
             await window.ethereum.request({

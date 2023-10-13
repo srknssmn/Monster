@@ -1,9 +1,8 @@
-// import express from 'express';
-// const router = express.Router();
+import express from 'express';
+const router = express.Router();
 
-// import * as walletController from '../controllers/walletController.js';
+import * as walletController from '../controllers/walletController.js';
 
-// router.route('/nonce').get(walletController.walletNonce);
-// router.route('/verify').get(walletController.walletVerify);
+router.route('/connect').get(walletController.walletConnect);
 
-// export default router;
+export default router;

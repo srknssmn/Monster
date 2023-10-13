@@ -1,6 +1,6 @@
 const getIndexPage = async (req, res) => {
-        res.status(200).render('index', {
-        page_name: 'index',
+    res.status(200).render('index', {
+        page_name: 'index'
     })
 };
 
