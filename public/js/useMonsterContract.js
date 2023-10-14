@@ -29,14 +29,7 @@ async function kickMonsterfunc(event) {
         await playAudio();
         await txn.wait();
         await console.log("success")
-
-        const response = await fetch(`/wallet/connect?walletAddress=${walletAddress}`).then(response => {
-            console.log(response)
-            window.location.href = response.url;
-            return window.location.href
-        }).catch(function(err) {
-            console.info("Error:" , err);
-        });
+        await location.reload();
     } else {
         connectWalletfunc();
     }

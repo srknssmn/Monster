@@ -1,25 +1,20 @@
 import express from "express";
 import dotenv from 'dotenv';
+import path from 'path';
+import * as url from 'url';
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const app = express();
 dotenv.config();
-
-// Template Engine
-app.set('view engine', 'ejs');
 
 // Middlewares
 app.use(express.static('public'))
 app.use(express.json());
 
-import pageRoute from './routes/pageRoute.js';
-import walletRoute from './routes/walletRoute.js';
-
-// app.use('/', pageRoute);
-app.use('/wallet', walletRoute);
-
-app.get('/', (req, res) => {
-  res.send("MERHABA")
-})
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
 
 const port = process.env.PORT || 5000
 
