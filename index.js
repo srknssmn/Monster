@@ -14,8 +14,12 @@ app.use(express.json());
 import pageRoute from './routes/pageRoute.js';
 import walletRoute from './routes/walletRoute.js';
 
-app.use('/', pageRoute);
+// app.use('/', pageRoute);
 app.use('/wallet', walletRoute);
+
+app.get('/', (req, res) => {
+  res.send("MERHABA")
+})
 
 const port = process.env.PORT || 5000
 
