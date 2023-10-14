@@ -9,7 +9,13 @@ const app = express();
 dotenv.config();
 
 // Middlewares
-app.use(express.static('public'))
+app.use(express.static(__dirname + "/public"))
+app.use('/images', express.static('images'));
+app.use('/js', express.static('js'));
+app.use('/css', express.static('css'));
+app.use('/audio', express.static('audio'));
+app.use('/constants', express.static('constants'));
+
 app.use(express.json());
 
 app.get('/', function(req, res) {
