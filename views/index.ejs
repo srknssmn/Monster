@@ -69,10 +69,10 @@
         </div>
 
         <div class="container">
-            
-            <button id="kickersList" hidden><strong>TOP 10</strong></button>
+          <button id="faucet"><strong><a href="https://test-faucet-chi.vercel.app/" style="text-decoration: none;" target="_blank">FAUCET</a></strong></button>
+          <button id="kickersList" hidden><strong>TOP 10</strong></button>
         </div>
-        <div id="userListSect" class="container bg-secondary" hidden>
+        <div id="userListSect" class="container bg-warning" hidden>
             <div class="pt-4">
                 <ol id="userList"></ol>
             </div>
@@ -91,6 +91,10 @@
               </div>
             </div>
         </div>
+        <audio controls id="ouchAudio" hidden>
+          <source src="horse.ogg" type="audio/ogg">
+          <source src="/audio/ough.mp3" type="audio/mpeg">
+        </audio>
 
         <script type="module" src="/js/useMonsterContract.js"></script>
         <script type="module" src="/js/connectWallet.js"></script>
