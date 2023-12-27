@@ -12,12 +12,12 @@ async function userArray() {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(MONSTER_ADDRESS, MONSTER_ABI, signer);
     
-    const userArray = await contract.showKickersArray();
+    const userArray = await contract.showCharsArray();
     kickersList.hidden = true
     userListSect.hidden = false
 
     let newUserArray = await [...userArray]
-    let sortedUserArray = await newUserArray.sort((a, b) => ethers.utils.formatEther(b.kickNumber) - ethers.utils.formatEther(a.kickNumber));
+    let sortedUserArray = await newUserArray.sort((a, b) => ethers.utils.formatEther(b.playerKick) - ethers.utils.formatEther(a.playerKick));
 
     for (let i = 0 ; i < sortedUserArray.length ; i++ ) {
         if (i < 10) {
@@ -26,16 +26,22 @@ async function userArray() {
             div.classList.add("d-flex" , "flex-row")
             listItem.appendChild(div);
             const kicker = document.createElement("p");
-            const space = document.createElement("p");
+            const space1 = document.createElement("p");
+            const space2 = document.createElement("p");
+            const kickerPower = document.createElement("p");
             const kickerCount = document.createElement("p");
             div.appendChild(kicker);
-            div.appendChild(space);
+            div.appendChild(space1);
+            div.appendChild(kickerPower);
+            div.appendChild(space2);
             div.appendChild(kickerCount);
-            let first = sortedUserArray[i].kicker.slice(0, 5)
-            let last = sortedUserArray[i].kicker.slice(-5)
+            let first = sortedUserArray[i].player.slice(0, 5)
+            let last = sortedUserArray[i].player.slice(-5)
             kicker.innerHTML = first + "..." + last
-            space.innerHTML = "&nbsp = &nbsp"
-            kickerCount.innerHTML = sortedUserArray[i].kickNumber
+            space1.innerHTML = "&nbsp / Player Power: &nbsp"
+            kickerPower.innerHTML = sortedUserArray[i].playerPower
+            space2.innerHTML = "&nbsp / Player Kick Count: &nbsp"
+            kickerCount.innerHTML = sortedUserArray[i].playerKick
             userList.appendChild(listItem);
         }
     }

@@ -1,24 +1,59 @@
 export const MONSTER_ABI = [
     {
-        "stateMutability": "payable",
-        "type": "fallback"
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
     },
     {
-        "inputs": [],
-        "name": "MonsterHealth",
-        "outputs": [
+        "inputs": [
             {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
             }
         ],
-        "stateMutability": "view",
-        "type": "function"
+        "name": "OwnableInvalidOwner",
+        "type": "error"
     },
     {
-        "inputs": [],
-        "name": "deathCount",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "OwnableUnauthorizedAccount",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "charLocation",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -37,35 +72,21 @@ export const MONSTER_ABI = [
                 "type": "uint256"
             }
         ],
-        "name": "kickCounts",
+        "name": "chars",
         "outputs": [
             {
                 "internalType": "address",
-                "name": "kicker",
+                "name": "player",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "kickNumber",
+                "name": "playerPower",
                 "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "kickCountsLocation",
-        "outputs": [
+            },
             {
                 "internalType": "uint256",
-                "name": "",
+                "name": "playerKick",
                 "type": "uint256"
             }
         ],
@@ -81,7 +102,52 @@ export const MONSTER_ABI = [
     },
     {
         "inputs": [],
-        "name": "kickerCount",
+        "name": "monsterFirstHealth",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "monsterHealth",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "playerKick",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -100,7 +166,7 @@ export const MONSTER_ABI = [
                 "type": "address"
             }
         ],
-        "name": "kickers",
+        "name": "playerPower",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -112,23 +178,48 @@ export const MONSTER_ABI = [
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_health",
+                "type": "uint256"
+            }
+        ],
+        "name": "reSetMonsterHealth",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [],
-        "name": "showKickersArray",
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "showCharsArray",
         "outputs": [
             {
                 "components": [
                     {
                         "internalType": "address",
-                        "name": "kicker",
+                        "name": "player",
                         "type": "address"
                     },
                     {
                         "internalType": "uint256",
-                        "name": "kickNumber",
+                        "name": "playerPower",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "playerKick",
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct Monster.Kicker[]",
+                "internalType": "struct Monster.Char[]",
                 "name": "",
                 "type": "tuple[]"
             }
@@ -137,7 +228,16 @@ export const MONSTER_ABI = [
         "type": "function"
     },
     {
-        "stateMutability": "payable",
-        "type": "receive"
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     }
 ]
