@@ -4,7 +4,6 @@ document.querySelector("#connectWallet").addEventListener('click' , connectWalle
 async function connectWalletfunc() {
 
     if (!window.ethereum) {
-        console.log("MetaMask not installed; using read-only defaults")
         window.alert("Install Metamask")
         if(confirm("Metamask Download")) document.location = 'https://metamask.io/download/';
     }
@@ -16,6 +15,7 @@ async function connectWalletfunc() {
     await provider.send("eth_requestAccounts", []).then((accounts) => {
         walletAddress = accounts[0];
     })
+    await console.log(walletAddress)
     const signer = await provider.getSigner();
     await location.reload();
 }
