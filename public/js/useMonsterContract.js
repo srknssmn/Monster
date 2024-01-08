@@ -19,7 +19,6 @@ async function kickMonsterfunc(event) {
     if (accounts.length) {
         await verifyNetwork();
         
-        let walletAddress;
         const provider = await new ethers.providers.Web3Provider(window.ethereum);
         // await provider.send("eth_requestAccounts", [])
         const signer = await provider.getSigner();
