@@ -16,7 +16,6 @@ async function connectWalletfunc() {
     await provider.send("eth_requestAccounts", []).then((accounts) => {
         walletAddress = accounts[0];
     })
-    await console.log(walletAddress)
     const signer = await provider.getSigner();
     await location.reload();
 }
